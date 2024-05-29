@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\PostsController;
+use App\Http\Controllers\SisController;
+use App\Http\Controllers\SiswaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -7,10 +10,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/coba', function () {
-    return view('coba');
+Route::get('template2', function () {
+    return view('admin.template');
 });
 
+
+Route::prefix('admin')->controller(SisController::class)->group(function () {
+	Route::get('/coba', 'index');
+    Route::get('/tabel', 'tabel');
+});
 
 Route::get('tampilan/{nilai}', function ($nilai) {
     return 'nilai saya adalah '.$nilai;
@@ -41,13 +49,13 @@ Route::get('/template', function () {
     return view('template');
 });
 
-Route::get('/table', function (Request $request) {
+Route::get('/tabel', function (Request $request) {
     $data = ['bakwan','tempe','tahu','mendoan','kentang'];
     return view('table', compact('data'));
 });
 
 Route::get('/index', function () {
-    return view('index');
+    return view('tpmdua.index');
 });
 
 Route::get('/login', function () {
@@ -57,3 +65,6 @@ Route::get('/login', function () {
 Route::get('/register', function ()  {
     return view('register');
 });
+
+Route::resource('siswa', SiswaController::class);
+Route::resource('post', PostsController::class);

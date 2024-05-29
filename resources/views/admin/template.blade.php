@@ -42,7 +42,7 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container">
+                <div class="p-4">
                     @yield('content')
                 </div>
                 <!-- /.container-fluid -->

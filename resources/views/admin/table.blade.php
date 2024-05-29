@@ -1,4 +1,4 @@
-@extends('template')
+@extends('admin.template')
 @section('content')
     <h1>Ini Halaman Table</h1>
     <table class="table">
@@ -9,12 +9,12 @@
           </tr>
         </thead>
         <tbody>
-        @foreach ($data as $item)
+        {{-- @foreach ($data as $item)
           <tr>
             <th scope="row">{{ $loop->iteration }}</th>
             <td>{{ $item }}</td> 
           </tr>
-        @endforeach
+        @endforeach --}}
         </tbody>
       </table>
 @endsection

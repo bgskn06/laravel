@@ -110,6 +110,7 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="p-4">
+                        @include('flashmessage')
                         @yield('content')
                     </div>
                 </main>
