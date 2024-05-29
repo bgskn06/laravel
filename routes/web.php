@@ -1,25 +1,16 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/coba', function () {
-    return "ini laravel saya";
+    return view('coba');
 });
+
 
 Route::get('tampilan/{nilai}', function ($nilai) {
     return 'nilai saya adalah '.$nilai;
@@ -41,8 +32,28 @@ Route::get('pembagian/{nilai1}/{nilai2}', function ($nilai1, $nilai2) {
     return 'Hasil Pembagian : '. $nilai1 / $nilai2;
 });
 
-Route::get('/bahasa', function () {
+Route::get('/bahasa', function (Request $request) {
     $bahasapemrograman = ['php', 'java', 'c', 'javascript', 'dart'];
-    $String = implode(', ',$bahasapemrograman);
-    return "Beberapa bahasa pemrograman antara lain : " . $String;
+    return $bahasapemrograman;
+});
+
+Route::get('/template', function () {
+    return view('template');
+});
+
+Route::get('/table', function (Request $request) {
+    $data = ['bakwan','tempe','tahu','mendoan','kentang'];
+    return view('table', compact('data'));
+});
+
+Route::get('/index', function () {
+    return view('index');
+});
+
+Route::get('/login', function () {
+    return view('login');
+});
+
+Route::get('/register', function () {
+    return view('register');
 });
