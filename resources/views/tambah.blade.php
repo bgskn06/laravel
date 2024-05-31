@@ -14,7 +14,12 @@
         <label for="alamat" class="form-label">Alamat</label>
         <input type="text" class="form-control @error ('alamat') is-invalid @enderror" name="alamat" placeholder="Alamat" value="{{ old('alamat') }}">
     </div>
-    <button type="submit" class="btn btn-primary">Simpan</button>
+    <select class="form-select" aria-label="Default select example" name="sekolah_id">
+        @foreach ($sekolah as $item)
+            <option value="{{$item->id}}">{{$item->nama_sekolah}}</option>
+        @endforeach
+    </select>
+    <button type="submit" class="btn btn-primary mt-4">Simpan</button>
 </form>
     
 @endsection

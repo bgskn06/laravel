@@ -4,6 +4,7 @@ use App\Http\Controllers\PostsController;
 use App\Http\Controllers\SisController;
 use App\Http\Controllers\SiswaController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -66,5 +67,8 @@ Route::get('/register', function ()  {
     return view('register');
 });
 
-Route::resource('siswa', SiswaController::class);
+Route::resource('siswa', SiswaController::class)->middleware(['auth', 'admin']);
 Route::resource('post', PostsController::class);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
